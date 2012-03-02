@@ -30,7 +30,7 @@ module Crummy
       options[:skip_if_blank] ||= Crummy.configuration.skip_if_blank
       
       # TODO: refactor
-      return '<ul id="pg-breadcrumbs"></ul>' if options[:skip_if_blank] && crumbs.count < 2
+      return '<ul id="pg-breadcrumbs"></ul>'.html_safe if options[:skip_if_blank] && crumbs.count < 2
       
       options[:format] ||= Crummy.configuration.format
       options[:separator] ||= Crummy.configuration.send(:"#{options[:format]}_separator")
