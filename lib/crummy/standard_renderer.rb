@@ -28,7 +28,10 @@ module Crummy
     #
     def render_crumbs(crumbs, options = {})
       options[:skip_if_blank] ||= Crummy.configuration.skip_if_blank
-      return '' if options[:skip_if_blank] && crumbs.count < 2
+      
+      # TODO: refactor
+      return '<ul id="pg-breadcrumbs"></ul>' if options[:skip_if_blank] && crumbs.count < 2
+      
       options[:format] ||= Crummy.configuration.format
       options[:separator] ||= Crummy.configuration.send(:"#{options[:format]}_separator")
       options[:links] ||= Crummy.configuration.links
